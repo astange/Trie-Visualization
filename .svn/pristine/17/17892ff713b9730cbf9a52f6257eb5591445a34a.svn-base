@@ -1,0 +1,66 @@
+package com.project;
+
+
+import java.util.Scanner;
+
+import javax.swing.JFrame;
+
+public class TrieDriver {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		TreePanel treePanel = new TreePanel();
+		treePanel.setSize(500, 500);
+		treePanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		treePanel.setResizable(false);
+		treePanel.setVisible(true);
+		treePanel.pack();
+		
+	/*	Trie trie = new Trie();
+		System.out.println("Please input a String and value seperated by a space to put it into the trie.");
+		System.out.println("When you are finished, press enter to continue...");
+		int i = 1;
+		Scanner scan = new Scanner(System.in);
+		while(true){
+			System.out.println("Enter String number " + i);
+			i++;
+			String input = scan.nextLine();
+			if(input.isEmpty()){
+				break;
+			}
+			String[] stringAndVal = input.split(" ");
+			if(stringAndVal.length != 2){
+				System.out.println("Please enter a valid input!");
+			}else{
+				String string = stringAndVal[0];
+				int value = Integer.parseInt(stringAndVal[1]);
+				trie.addToTrie(string, value);
+			}
+			System.out.println();
+		}
+		System.out.println();
+		System.out.println("Now enter a string you would like to search for. If it exists, we will");
+		System.out.println("print the value. If not, we will print Does Not Exist.");
+		System.out.println();
+		while(true){
+			System.out.println("Enter a string to search for: ");
+			String input = scan.nextLine();
+			if(input.isEmpty()){
+				break;
+			}
+			int val = -1;
+			val = trie.findInTrie(input);
+			if(val == -1){
+				System.out.println("Value for: " + input + " is equal to: Does Not Exist.");
+			}else{
+				System.out.println("Value for: " + input + " is equal to: " + val);
+			}
+			System.out.println();
+		}
+		System.out.println("Program Done");
+		scan.close();*/
+	}
+}

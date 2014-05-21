@@ -1,0 +1,54 @@
+package com.project;
+
+import java.util.HashMap;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class TrieNode extends DefaultMutableTreeNode{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	char character;
+	/**
+	 * My basic idea for a TrieNode, change as you see fit.
+	 */
+	private HashMap<Character, TrieNode> children;
+	private int value;
+	public TrieNode(char c, String name){
+		super(name);
+		children = new HashMap<Character,TrieNode>();
+		value = -1;
+		this.character = c;
+	}
+	
+	public int getValue(){
+		return value;
+	}
+	
+	public void setValue(int value){
+		this.value = value;
+	}
+	
+	public TrieNode getChild(char c){
+		return children.get(c);
+	}
+	
+	public void giveChild(char c){
+		TrieNode newNode = new TrieNode(c, c + "");
+		children.put(c, newNode);
+		super.add(newNode);
+	}
+	
+	public boolean hasChild(char c){
+		return children.containsKey(c);
+	}
+	
+	public int numChildren(){
+		return children.size();
+	}
+	
+	public void removeChild(char c){
+		children.remove(c);
+	}
+}

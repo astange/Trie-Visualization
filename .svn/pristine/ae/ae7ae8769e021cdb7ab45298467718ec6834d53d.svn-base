@@ -1,0 +1,29 @@
+package com.project;
+
+public class TrieNode {
+	/**
+	 * My basic idea for a TrieNode, change as you see fit.
+	 */
+	private TrieNode children[];
+	private int value;
+	public TrieNode(){
+		children = new TrieNode[Character.MAX_VALUE + 1];
+		value = -1;
+	}
+	
+	public int getValue(){
+		return value;
+	}
+	
+	public void setValue(int value){
+		this.value = value;
+	}
+	
+	public TrieNode getChildFor(char c){
+		return children[c];
+	}
+	
+	public void giveChild(char c){
+		children[c] = new TrieNode();
+	}
+}

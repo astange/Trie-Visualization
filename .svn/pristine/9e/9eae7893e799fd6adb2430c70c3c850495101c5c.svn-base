@@ -1,0 +1,71 @@
+package com.project;
+import java.util.Collection;
+import java.util.TreeMap;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class TrieNode extends DefaultMutableTreeNode{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private char character;
+	private String string;
+	/**
+	 * My basic idea for a TrieNode, change as you see fit.
+	 */
+	private TreeMap<Character, TrieNode> children;
+	private int value;
+	public TrieNode(char c, String name){
+		super(name);
+		children = new TreeMap<Character,TrieNode>();
+		value = -1;
+		this.character = c;
+		string = null;
+	}
+	
+	public int getValue(){
+		return value;
+	}
+	
+	public void setValue(int value){
+		this.value = value;
+	}
+	
+	public TrieNode getChild(char c){
+		return children.get(c);
+	}
+	
+	public void giveChild(char c){
+		TrieNode newNode = new TrieNode(c, c + "");
+		children.put(c, newNode);
+		super.add(newNode);
+	}
+	
+	public boolean hasChild(char c){
+		return children.containsKey(c);
+	}
+	
+	public int numChildren(){
+		return children.size();
+	}
+	
+	public void removeChild(char c){
+		children.remove(c);
+	}
+	
+	public Collection<TrieNode> getAllChildren(){
+		return children.values();
+	}
+	public char getCharacter(){
+		return character;
+	}
+	
+	public void setString(String s){
+		this.string = s;
+	}
+	
+	public String getString(){
+		return string;
+	}
+}

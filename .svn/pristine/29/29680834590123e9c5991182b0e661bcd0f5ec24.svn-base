@@ -1,0 +1,40 @@
+package com.project;
+
+/**
+ * Empty Trie Class for TrieFind, TrieAdd, and any other methods we decide to implement
+ * @author anthony
+ *
+ */
+public class Trie {
+	//place holder until add trie method is implemented.
+	private TrieNode root;
+	
+	public Trie(){
+		
+	}
+	
+	public int findInTrie(String key){
+		return findInTrie(root, key, 0);
+	}
+
+	/**
+	 * This code may not be correct right now. I will test more once you have the add implementation done.
+	 * @param node
+	 * @param key
+	 * @param index
+	 * @return
+	 */
+	private static int findInTrie(TrieNode node, String key, int index){
+		if(node == null){
+			return -1;
+		}
+		TrieNode child = node.getNodeFor(key.charAt(index));
+		if(child != null){
+			if(index == key.length() - 1){
+				return node.getValue();
+			}
+			return findInTrie(child, key, index++);
+		}
+		return -1;
+	}
+}

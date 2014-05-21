@@ -1,0 +1,35 @@
+package com.project;
+
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class TreePanel extends JFrame implements TreeSelectionListener{
+	
+	private JTree tree;
+	
+	public TreePanel() {
+		
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("The Trie of Death");
+		DefaultMutableTreeNode child1 = new DefaultMutableTreeNode("Child 1");
+		root.add(child1);
+		DefaultMutableTreeNode child2 = new DefaultMutableTreeNode("Child 2");
+		root.add(child2);
+		JTree tree = new JTree(root);
+		add(new JScrollPane(tree));
+	}
+
+	@Override
+	public void valueChanged(TreeSelectionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}

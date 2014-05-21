@@ -1,0 +1,31 @@
+package com.project;
+
+import java.util.HashMap;
+
+public class TrieNode {
+	/**
+	 * My basic idea for a TrieNode, change as you see fit.
+	 */
+	private HashMap<Character, TrieNode> children;
+	private int value;
+	public TrieNode(){
+		children = new HashMap<Character,TrieNode>();
+		value = -1;
+	}
+	
+	public int getValue(){
+		return value;
+	}
+	
+	public void setValue(int value){
+		this.value = value;
+	}
+	
+	public TrieNode getNodeFor(char c){
+		return children.get(c);
+	}
+	
+	public void giveChild(char c){
+		children.put(c, new TrieNode());
+	}
+}

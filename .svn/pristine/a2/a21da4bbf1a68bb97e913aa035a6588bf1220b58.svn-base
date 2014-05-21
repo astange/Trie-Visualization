@@ -1,0 +1,28 @@
+package com.project;
+
+public class TrieFind {
+	
+	//place holder until add trie method is implemented.
+	private static TrieNode root;
+	public static int findInTrie(String key){
+		return findInTrie(root, key, 0);
+	}
+
+	/**
+	 * This code may not be correct right now. I will test more once you have the add implementation done.
+	 * @param node
+	 * @param key
+	 * @param index
+	 * @return
+	 */
+	private static int findInTrie(TrieNode node, String key, int index){
+		TrieNode child = node.getChildFor(key.charAt(index));
+		if(child != null){
+			if(index == key.length() - 1){
+				return node.getValue();
+			}
+			return findInTrie(child, key, index++);
+		}
+		return -1;
+	}
+}

@@ -1,0 +1,98 @@
+package com.project;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class InputPanel extends JPanel{
+
+	JButton adding;
+	JButton remove;
+	JButton find;
+	JButton print;
+
+	JTextField addfield;
+	JTextField valueField;
+	JTextField removefield;
+	JTextField findfield;
+	
+	TreeDisplay tree;
+
+	public InputPanel(TreeDisplay tree) {
+		
+		this.tree = tree;
+		
+		setSize(100, 50);
+
+		adding = new JButton("Add");
+		adding.addActionListener(new ButtonListener(0));
+		remove = new JButton("Remove");
+		remove.addActionListener(new ButtonListener(1));
+		find = new JButton("Find");
+		find.addActionListener(new ButtonListener(2));
+		print = new JButton("Print all Students!");
+		print.addActionListener(new ButtonListener(3));
+
+
+		addfield = new JTextField(5);
+		valueField = new JTextField(5);
+		
+		removefield = new JTextField(10);
+		findfield = new JTextField(10);
+
+		add(adding);
+		add(addfield);
+		add(valueField);
+		add(remove);
+		add(removefield);
+		add(find);
+		add(findfield);
+		add(print);
+	}
+
+	class ButtonListener implements ActionListener {
+		int action;
+
+		public ButtonListener(int action) {
+			this.action = action;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			switch (action) {
+			//case 0 is when the add button is pressed. Adds the String and value into the trie.
+				case 0: ((TreeDisplay) tree).addToTrie(addfield.getText(), Integer.parseInt(valueField.getText()));
+						DetailPanel.addText("The String you added was: "+ addfield.getText() + " and the value inputted was: " + valueField.getText());
+						addfield.setText("");
+						valueField.setText("");
+					break;
+			//case 1 is when the remove button is pressed. Removes the string if it exists and displays the value it had.
+				case 1: int value = tree.removeInTrie(removefield.getText());
+						if(value == -1){
+							DetailPanel.addText("The String you inputtted DOES NOT EXIST. Please try again.");
+						}else{
+							DetailPanel.addText("The String you removed is: " + removefield.getText() 
+									+ " and its value was: " + value);
+						}
+						removefield.setText("");
+					break;
+			//case 2 is when the find button is pressed. Highlights the path to the node if it exists and displays the value.
+				case 2: int val = tree.findInTrie(findfield.getText());
+						if(val == -1){
+							DetailPanel.addText("The String does not exist in the Trie.");
+						}else{
+							DetailPanel.addText("The String you inputted has been expanded and highlighted. Its value is: " + val);
+						}
+						
+					break;
+			//runs a preorder traversal on the tree which displays the strings in lexographically sorted order.
+				case 3: tree.preorderTraversal();
+					break;
+			}
+		}
+
+	}
+}

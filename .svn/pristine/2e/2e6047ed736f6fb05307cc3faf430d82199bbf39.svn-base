@@ -1,0 +1,69 @@
+package com.project;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class InputPanel extends JPanel{
+
+	JButton adding;
+	JButton remove;
+	JButton find;
+	JButton print;
+
+	JTextArea addfield;
+	JTextArea removefield;
+	JTextArea findfield;
+
+	public InputPanel() {
+		
+		setSize(100, 50);
+
+		adding = new JButton("Add");
+		adding.addActionListener(new ButtonListener(0));
+		remove = new JButton("Button");
+		remove.addActionListener(new ButtonListener(1));
+		find = new JButton("Find");
+		find.addActionListener(new ButtonListener(2));
+		print = new JButton("Print all Students!");
+		print.addActionListener(new ButtonListener(3));
+
+
+		addfield = new JTextArea(1,10);
+		removefield = new JTextArea(1,10);
+		findfield = new JTextArea(1,10);
+
+		add(adding);
+		add(addfield);
+		add(remove);
+		add(removefield);
+		add(find);
+		add(findfield);
+		add(print);
+	}
+
+	class ButtonListener implements ActionListener {
+		int action;
+
+		public ButtonListener(int action) {
+			this.action = action;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			switch (action) {
+				case 0: 
+				case 1:
+				case 2:
+				case 3:
+			}
+		}
+
+	}
+
+
+
+}

@@ -1,0 +1,44 @@
+package com.project;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class TreeDisplay extends JPanel implements TreeSelectionListener {
+
+	private JTree tree;
+	private TrieNode root;
+	JScrollPane panel;
+	
+	JFrame trees;
+	
+	public TreeDisplay(TreePanel trees) {
+		
+		this.trees = trees;
+		
+		root = new TrieNode('a',"Trie");
+		DefaultMutableTreeNode child1 = new DefaultMutableTreeNode("Child 1");
+		root.add(child1);
+		DefaultMutableTreeNode child2 = new DefaultMutableTreeNode("Child 2");
+		root.add(child2);
+
+		tree = new JTree(root);
+		tree.setPreferredSize(new Dimension(400,300));
+		panel = new JScrollPane(tree);
+		panel.setSize(100, 100);
+		add(panel);
+	}
+
+	@Override
+	public void valueChanged(TreeSelectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

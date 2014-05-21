@@ -1,0 +1,68 @@
+package com.project;
+
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
+public class TreePanel extends JFrame implements TreeSelectionListener{
+	
+	private JTree tree;
+	private TrieNode root;
+
+	public TreePanel() {
+		
+		root = new TrieNode('a', "Root");
+	/*	DefaultMutableTreeNode child1 = new DefaultMutableTreeNode("Child 1");
+		root.add(child1);
+		DefaultMutableTreeNode child2 = new DefaultMutableTreeNode("Child 2");
+		root.add(child2);*/
+		JTree tree = new JTree(root);
+		add(new JScrollPane(tree));
+		addToTrie("name", 61);
+	}
+	
+	public void addToTrie(String name, int value) {
+		TrieNode temp = root;
+		int i = 0;
+		while (temp.hasChild(name.charAt(i))){
+			temp = temp.getChild(name.charAt(i));
+			i++;
+		}
+		if (i == name.length()){
+			temp.setValue(value);
+		}
+		else {
+			if (i==0) {
+				while(i<name.length()){
+					temp.giveChild(name.charAt(i));
+					temp = temp.getChild(name.charAt(i));
+					i++;
+				}
+				temp.setValue(value);
+			}
+			else {
+				while(i<name.length()){
+					temp.giveChild(name.charAt(i));
+					temp = temp.getChild(name.charAt(i));
+					i++;
+				}
+				temp.setValue(value);
+			}
+		}
+	}
+
+	@Override
+	public void valueChanged(TreeSelectionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}
